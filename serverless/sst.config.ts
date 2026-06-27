@@ -58,7 +58,9 @@ export default $config({
       primaryIndex: { hashKey: "secret" },
     });
 
-    const router = new sst.aws.Router("Hrf");
+    const router = new sst.aws.Router("Hrf", {
+      domain: "arcs.thegeekpad.com",
+    });
 
     // The card/board art, fonts, etc. that live under /hrf/* are not part of
     // this git repo (see README.md). Drop them into serverless/assets/ before
