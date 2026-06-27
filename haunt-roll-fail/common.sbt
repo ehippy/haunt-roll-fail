@@ -24,29 +24,7 @@ scalacOptions := Seq(
     ).map("msg=" + _ + ":s").mkString(",")
 )
 
-Compile / unmanagedSourceDirectories += baseDirectory.value / "root"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "cthw"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "dwam"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "vast"
-
 Compile / unmanagedSourceDirectories += baseDirectory.value / "arcs"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "doms"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "inis"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "coup"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "suok"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "sehi"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "yarg"
-
-Compile / unmanagedSourceDirectories += baseDirectory.value / "bsg"
 
 libraryDependencies += "com.lihaoyi" %%% "fastparse" % "3.0.2"
 

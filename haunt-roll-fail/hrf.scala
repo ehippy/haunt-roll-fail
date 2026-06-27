@@ -92,20 +92,7 @@ object HRF {
     val replay = flag("replay")
 
     val metaUIs : $[(MetaGame, BaseUI)] = $(
-        root.Meta -> root.UI,
-        root.MetaAdset -> root.UI,
-        root.MetaMirror -> root.UI,
-        cthw.Meta -> cthw.UI,
-        dwam.Meta -> dwam.UI,
-        vast.Meta -> vast.UI,
         arcs.Meta -> arcs.UI,
-        arcs.MetaBR -> arcs.UI,
-        doms.Meta -> doms.UI,
-        inis.Meta -> inis.UI,
-        coup.Meta -> coup.UI,
-        sehi.Meta -> sehi.UI,
-        suok.Meta -> suok.UI,
-        yarg.Meta -> yarg.UI,
     )
 
     val metas = metaUIs.lefts
@@ -258,40 +245,6 @@ object HRFR {
     val original = Resources(ImageResources(Map(), Map(
         "question-mark" -> "/hrf/question-mark.png",
         "external-link" -> "/hrf/external-link.png",
-
-        "battle" -> "/hrf/webp2/root/images/icon/battle.webp",
-        "swap" -> "/hrf/webp2/root/images/icon/swap.webp",
-
-        "vb-title-tinker" -> "/hrf/webp2/root/images/faction/hero/vb-title-tinker.webp",
-        "vb-char-tinker"  -> "/hrf/webp2/root/images/faction/hero/vb-char-tinker.webp",
-        "vb-title-harrier" -> "/hrf/webp2/root/images/faction/hero/vb-title-harrier.webp",
-        "vb-char-harrier"  -> "/hrf/webp2/root/images/faction/hero/vb-char-harrier.webp",
-        "vb-title-scoundrel" -> "/hrf/webp2/root/images/faction/hero/vb-title-scoundrel.webp",
-        "vb-char-scoundrel"  -> "/hrf/webp2/root/images/faction/hero/vb-char-scoundrel.webp",
-        "vb-title-arbiter" -> "/hrf/webp2/root/images/faction/hero/vb-title-arbiter.webp",
-        "vb-char-arbiter"  -> "/hrf/webp2/root/images/faction/hero/vb-char-arbiter.webp",
-        "vb-title-ronin" -> "/hrf/webp2/root/images/faction/hero/vb-title-ronin.webp",
-        "vb-char-ronin"  -> "/hrf/webp2/root/images/faction/hero/vb-char-ronin.webp",
-        "vb-title-folk-hero" -> "/hrf/webp2/root/images/faction/hero/vb-title-folk-hero.webp",
-        "vb-char-folk-hero"  -> "/hrf/webp2/root/images/faction/hero/vb-char-folk-hero.webp",
-
-        "item-boots"     -> "/hrf/webp2/root/images/item/item-boots.webp",
-        "item-coins"     -> "/hrf/webp2/root/images/item/item-coins.webp",
-        "item-sword"     -> "/hrf/webp2/root/images/item/item-sword.webp",
-        "item-torch"     -> "/hrf/webp2/root/images/item/item-torch.webp",
-        "item-bag"       -> "/hrf/webp2/root/images/item/item-bag.webp",
-        "item-crossbow"  -> "/hrf/webp2/root/images/item/item-crossbow.webp",
-        "item-hammer"    -> "/hrf/webp2/root/images/item/item-hammer.webp",
-        "item-teapot"    -> "/hrf/webp2/root/images/item/item-teapot.webp",
-
-        "quest:errand-fox"             -> "/hrf/webp2/root/images/card/quest/revised/errand-fox.webp",
-        "quest:errand-rabbit"          -> "/hrf/webp2/root/images/card/quest/revised/errand-rabbit.webp",
-        "quest:escort-mouse"           -> "/hrf/webp2/root/images/card/quest/revised/escort-mouse.webp",
-        "quest:repair-a-shed-rabbit"   -> "/hrf/webp2/root/images/card/quest/revised/repair-a-shed-rabbit.webp",
-        "quest:fundraising-fox"        -> "/hrf/webp2/root/images/card/quest/revised/fundraising-fox.webp",
-        "quest:escort-fox"             -> "/hrf/webp2/root/images/card/quest/revised/escort-fox.webp",
-
-        "borscht-kitchens"        -> "/hrf/webp2/root/images/card/deck/borscht-kitchens.webp",
     ), HRF.imageCache), () => Map())
 
     val loader = HRF.embedded.?(new WrappedEmbeddedImageLoader(s => "asset-" + s)).|(HRF.imageCache)

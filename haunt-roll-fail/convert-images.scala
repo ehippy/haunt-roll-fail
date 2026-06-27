@@ -18,17 +18,7 @@ import java.nio.file.Files
 
 object ConvertImages {
     val metas = $(
-        root.Meta,
-        cthw.Meta,
-        dwam.Meta,
-        vast.Meta,
         arcs.Meta,
-        doms.Meta,
-        inis.Meta,
-        coup.Meta,
-        sehi.Meta,
-        suok.Meta,
-        yarg.Meta,
     )
 
     implicit class StringToPath(val s : String) {
