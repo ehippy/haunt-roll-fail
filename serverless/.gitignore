@@ -1,0 +1,9 @@
+node_modules/
+.sst/
+dist/
+src/template.generated.ts
+
+# Card/board art and fonts you drop in locally (see README.md). Gitignored
+# by default since this is likely copyrighted material you shouldn't push to
+# a public fork.
+assets/

@@ -1,0 +1,10 @@
+# sbt / Scala build output
+target/
+project/target/
+project/project/
+
+# Scala IDE/tooling caches
+.bloop/
+.metals/
+.bsp/
+.scala-build/
