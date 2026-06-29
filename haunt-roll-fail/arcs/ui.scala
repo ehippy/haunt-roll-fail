@@ -1863,15 +1863,13 @@ class UI(val uir : ElementAttachmentPoint, arity : Int, title : String, val opti
                 (game.discourt.any || options.has(DebugInterface)).??(() => { onClick("discourt") })).copy(clear = false)
             ) ++
             $(ZBasic(Break ~ Break, "Map Readout".hh, () => { onClick("readout") }).copy(clear = false)) ++
-            $(ZOption(Empty, HorizontalBreak ~ HorizontalBreak ~
-                "Ambition Standing".hh.hlb ~ HorizontalBreak ~
+            $(ZOption(Break ~ Break ~ Break, "Ambition Standing".hh.hlb ~ HorizontalBreak ~
                 game.ambitions./(a =>
                     a.toString.styled(a).hlb ~ SpacedDash ~
                     game.factions.sortBy(f => -f.ambitionValue(a))./(f => f.ambitionValue(a).toString.styled(f).hlb).intersperse("/".hl).merge ~ HorizontalBreak
                 ).merge
             )) ++
-            $(ZOption(Empty, HorizontalBreak ~ HorizontalBreak ~
-                "Current Scoring".hh.hlb ~ HorizontalBreak ~
+            $(ZOption(Break ~ Break ~ Break, Break ~ Break ~ "Current Scoring".hh.hlb ~ HorizontalBreak ~
                 game.factions./{ f =>
                     val gains = game.projectedAmbitionGains(f)
                     val declared = game.declared.keys.$
