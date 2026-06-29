@@ -1863,6 +1863,26 @@ class UI(val uir : ElementAttachmentPoint, arity : Int, title : String, val opti
                 (game.discourt.any || options.has(DebugInterface)).??(() => { onClick("discourt") })).copy(clear = false)
             ) ++
             $(ZBasic(Break ~ Break, "Map Readout".hh, () => { onClick("readout") }).copy(clear = false)) ++
+            $(ZOption(Empty, HorizontalBreak ~ HorizontalBreak ~
+                "Ambition Standing".hh.hlb ~ HorizontalBreak ~
+                game.ambitions./(a =>
+                    a.toString.styled(a).hlb ~ SpacedDash ~
+                    game.factions.sortBy(f => -f.ambitionValue(a))./(f => f.ambitionValue(a).toString.styled(f).hlb).intersperse("/".hl).merge ~ HorizontalBreak
+                ).merge
+            )) ++
+            $(ZOption(Empty, HorizontalBreak ~ HorizontalBreak ~
+                "Current Scoring".hh.hlb ~ HorizontalBreak ~
+                game.factions./{ f =>
+                    val gains = game.projectedAmbitionGains(f)
+                    val declared = game.declared.keys.$
+                    val total = f.power + gains.sum
+
+                    f.name.styled(f).hlb ~ SpacedDash ~
+                    f.power.power ~
+                    declared.zip(gains)./{ case (a, n) => " + ".hl ~ n.toString.styled(a).hlb }.merge ~
+                    " = ".hl ~ total.power ~ HorizontalBreak
+                }.merge
+            )) ++
             (currentGame.isOver && hrf.HRF.flag("replay").not).$(
                 ZBasic(Break ~ Break ~ Break, "Save Replay As File".hh, () => {
                     showOverlay(overlayScrollX("Saving Replay...".hl.div).onClick, null)

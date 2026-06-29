@@ -36,6 +36,12 @@ package object elem {
         Relic --> color("#98d1dc")
         Psionic --> color("#e36386")
 
+        Tycoon --> color("#c9a227")
+        Tyrant --> color("#b0b0b0")
+        Warlord --> color("#7a2426")
+        Keeper --> color("#1f4068")
+        Empath --> color("#e36386")
+
         Administration --> $(color("#898a82"), font.weight("bold"))
         Aggression --> $(color("#a82024"), font.weight("bold"))
         Construction --> $(color("#d65329"), font.weight("bold"))

@@ -215,7 +215,7 @@ case class Figure(faction : Color, piece : Piece, index : Int) extends GameEleme
 }
 
 
-trait Ambition extends NamedToString with Elementary with Record {
+trait Ambition extends NamedToString with Elementary with Record with Styling {
     override def elem = this.toString.styled(styles.titleW)
     val strength : Int
 }
@@ -1866,6 +1866,25 @@ class Game(val setup : $[Faction], val options : $[Meta.O]) extends BaseGame wit
     }
 
     def cleanFor(f : Faction) = this
+
+    // Non-mutating preview of what each currently-declared ambition would award right
+    // now, per faction, for the "Current Scoring" readout. Runs the real
+    // ScoreAmbitionsAction (with all its trait/lore/city-count modifiers) against a
+    // clone -- once per declared ambition, isolated, so the per-ambition gains can be
+    // shown individually -- so the projection always matches what actually happens
+    // when the chapter really ends.
+    def projectedAmbitionGains : Map[Faction, $[Int]] = {
+        def power(g : Game, f : Faction) = g.states(f).as[FactionState].get.power
+
+        val perAmbition = declared.keys.$./{ a =>
+            val g = cloned()
+            g.declared = Map(a -> declared(a))
+            g.performContinue(None, ScoreAmbitionsAction, false)
+            factions./(f => f -> (power(g, f) - power(this, f))).toMap
+        }
+
+        factions./(f => f -> perAmbition./(m => m(f))).toMap
+    }
 
     // override def finalize() {
     //     println("finalize()")
